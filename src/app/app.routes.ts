@@ -26,5 +26,10 @@ export const routes: Routes = [
     loadComponent: () => import('./expense/expense-form.component').then(m => m.ExpenseFormComponent),
     canActivate: [authGuard]
   },
+{
+    path: 'reports',
+    loadComponent: () => import('./reports/reports.component').then(m => m.ReportsComponent),
+    canActivate: [authGuard]
+  },
   { path: '**', redirectTo: '/dashboard' }
 ];

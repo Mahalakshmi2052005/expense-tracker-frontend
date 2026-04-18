@@ -26,6 +26,10 @@ import { ExpenseService, Expense, CATEGORIES } from '../services/expense.service
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             Add Expense
           </a>
+          <a class="nav-item" routerLink="/reports">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            Reports
+          </a>
         </nav>
         <div class="sidebar-footer">
           <div class="user-info">
@@ -129,17 +133,12 @@ import { ExpenseService, Expense, CATEGORIES } from '../services/expense.service
   styles: [`
     * { box-sizing: border-box; margin: 0; padding: 0; }
     .app { display: flex; min-height: 100vh; background: #f5f5f0; font-family: sans-serif; }
-
-    /* Sidebar */
     .sidebar {
       width: 220px; background: #1a1a1a; color: #fff;
       display: flex; flex-direction: column; padding: 24px 0;
       position: fixed; height: 100vh; left: 0; top: 0;
     }
-    .sidebar-logo {
-      display: flex; align-items: center; gap: 10px;
-      padding: 0 20px 28px;
-    }
+    .sidebar-logo { display: flex; align-items: center; gap: 10px; padding: 0 20px 28px; }
     .logo-icon {
       width: 30px; height: 30px; background: #fff; color: #1a1a1a;
       border-radius: 4px; display: flex; align-items: center;
@@ -165,8 +164,6 @@ import { ExpenseService, Expense, CATEGORIES } from '../services/expense.service
     .user-name { font-size: 13px; color: #fff; font-weight: 500; }
     .logout-btn { background: none; border: none; color: #888; font-size: 12px; cursor: pointer; padding: 0; }
     .logout-btn:hover { color: #fff; }
-
-    /* Main */
     .main { margin-left: 220px; flex: 1; padding: 32px; }
     .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
     .top-bar h1 { font-size: 22px; color: #1a1a1a; font-family: 'Georgia', serif; }
@@ -178,13 +175,8 @@ import { ExpenseService, Expense, CATEGORIES } from '../services/expense.service
       text-decoration: none; transition: background 0.2s;
     }
     .btn-add:hover { background: #333; }
-
-    /* Summary cards */
     .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
-    .summary-card {
-      background: #fff; border-radius: 6px; padding: 20px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-    }
+    .summary-card { background: #fff; border-radius: 6px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
     .summary-card.total { background: #1a1a1a; color: #fff; }
     .summary-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
     .summary-card.total .summary-label { color: #aaa; }
@@ -193,8 +185,6 @@ import { ExpenseService, Expense, CATEGORIES } from '../services/expense.service
     .summary-card.total .summary-amount { color: #fff; }
     .summary-sub { font-size: 12px; color: #aaa; margin-top: 4px; }
     .summary-card.total .summary-sub { color: #888; }
-
-    /* Filters */
     .filters {
       background: #fff; border-radius: 6px; padding: 16px 20px;
       display: flex; gap: 16px; align-items: flex-end; margin-bottom: 20px;
@@ -211,11 +201,7 @@ import { ExpenseService, Expense, CATEGORIES } from '../services/expense.service
     .btn-clear {
       background: #f0f0ee; border: none; padding: 8px 16px;
       border-radius: 4px; font-size: 13px; cursor: pointer; color: #666;
-      transition: background 0.15s;
     }
-    .btn-clear:hover { background: #e0e0de; }
-
-    /* Expense list */
     .expense-list { background: #fff; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); overflow: hidden; }
     .list-header {
       display: flex; justify-content: space-between; align-items: center;
@@ -227,11 +213,9 @@ import { ExpenseService, Expense, CATEGORIES } from '../services/expense.service
     .empty { padding: 60px 20px; text-align: center; color: #aaa; }
     .empty p { margin: 12px 0 8px; font-size: 14px; }
     .empty a { color: #1a1a1a; font-size: 13px; font-weight: 600; text-decoration: none; }
-
     .expense-item {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 16px 20px; border-bottom: 1px solid #f8f8f6;
-      transition: background 0.1s;
+      padding: 16px 20px; border-bottom: 1px solid #f8f8f6; transition: background 0.1s;
     }
     .expense-item:hover { background: #fafaf8; }
     .expense-item:last-child { border-bottom: none; }
@@ -239,15 +223,11 @@ import { ExpenseService, Expense, CATEGORIES } from '../services/expense.service
     .expense-cat-badge {
       width: 38px; height: 38px; border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 17px; background: #f5f5f0;
-      flex-shrink: 0;
+      font-size: 17px; background: #f5f5f0; flex-shrink: 0;
     }
     .expense-title { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 3px; }
     .expense-meta { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #aaa; flex-wrap: wrap; }
-    .cat-tag {
-      background: #f0f0ee; color: #666; padding: 2px 7px;
-      border-radius: 3px; font-size: 11px; font-weight: 500;
-    }
+    .cat-tag { background: #f0f0ee; color: #666; padding: 2px 7px; border-radius: 3px; font-size: 11px; font-weight: 500; }
     .note-text { font-style: italic; color: #bbb; }
     .expense-right { display: flex; align-items: center; gap: 16px; }
     .expense-amount { font-size: 15px; font-weight: 700; color: #1a1a1a; font-family: 'Georgia', serif; }
@@ -260,7 +240,6 @@ import { ExpenseService, Expense, CATEGORIES } from '../services/expense.service
     }
     .action-btn.edit:hover { border-color: #1a1a1a; color: #1a1a1a; }
     .action-btn.delete:hover { border-color: #e53e3e; color: #e53e3e; }
-
     @media (max-width: 768px) {
       .sidebar { display: none; }
       .main { margin-left: 0; padding: 16px; }
@@ -323,9 +302,7 @@ export class DashboardComponent implements OnInit {
     this.loadExpenses();
   }
 
-  editExpense(id: string) {
-    this.router.navigate(['/edit-expense', id]);
-  }
+  editExpense(id: string) { this.router.navigate(['/edit-expense', id]); }
 
   deleteExpense(id: string) {
     if (!confirm('Delete this expense?')) return;
